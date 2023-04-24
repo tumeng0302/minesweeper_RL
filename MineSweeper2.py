@@ -149,9 +149,11 @@ class MineSweeper(cv):
                 return None
             self.click_once(x, y)
 
-        elif event == 2:
+        elif event == 2 :
             x = x//43
             y = y//43
+            if self.playing_map[y][x] >-2 :
+                return None
             self.playing_map[y][x] = -self.playing_map[y][x] - 5
             self.set_flag(x, y, -self.playing_map[y][x] - 2)
 
@@ -204,5 +206,5 @@ if __name__=='__main__':
     again = True
     while again:
         ms = MineSweeper(h=15, w=15, mine_number=10)
-        again = ms.run_keyboard()
-        # again = ms.run_mouse()
+        # again = ms.run_keyboard()
+        again = ms.run_mouse()
